@@ -5,7 +5,8 @@ using namespace std;
 class Patient
 {
 private:
-    string name, severity;
+    string name;
+    int severity;
 
 public:
     Patient(string name, int severity) {  // Constructor
@@ -17,10 +18,18 @@ public:
     // Setters
     void setName(string name) {
         this->name = name;
-    };
-    void setSeverity(string severity) {
+    }
+    void setSeverity(int severity) {
         this->severity = severity;
-    };
+    }
+
+    // Getters
+    string getName() const {
+        return name;
+    }
+    int getSeverity() const {
+        return severity;
+    }
 
 };
 
