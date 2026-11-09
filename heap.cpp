@@ -1,49 +1,61 @@
 #include <string>
 #include "Patient.cpp"
+#include <iterator>
 
 struct Node {
     Patient patient;
-    int score;
-    Node* leftChild;
-    Node* rightChild;
+    Node* next;
 
-    Node(Patient patient_, int score_) : patient(patient_), score(score_), leftChild(nullptr), rightChild(nullptr) {};
+    Node(Patient patient_) : patient(patient_), next(nullptr) {};
 };
 
-class Heap
-{
+class LL {
 private:
-    Node* front;
-    Node* back;
+    Node* head;
+    Node* tail;
 
 public:
-    Heap() : front(nullptr), back(nullptr) {}; // Constructor
-    ~Heap(); // Destructor
+    LL() : head(nullptr), tail(nullptr) {}; // Constructor
+    ~LL(); // Destructor
 
-    void insert(Patient patient, int score); // Insert into heap
+    void insert(Patient patient); // Insert into heap
     void remove(Patient patient); // Delete from heap
-    void sort(); // Prioritize
 };
 
 
 /* Insert function */
-void Heap::insert(Patient patient, int score) {
-    Node* node = new Node(patient, score);
+void LL::insert(Patient patient) {
+    Node* node = new Node(patient);
 
-    if(!front) {  // nullptr returns a False, so if we want this case then we negate it
-        front = node;
-        back = node;
+    // There is no node in the LL
+    if(!head) {  
+        head = node;
+        tail = node;
         return;
+    }
+
+    // There is only one node in the LL
+    if(!head->next) {
+        head->next = node;
+        tail = node;
+        return;
+    }
+
+    if(node->patient.getSeverity() == 5) {
+        tail->next = node;
+        tail = node;
+        return
+    }
+
+    Node* current = front;
+    Node* prev = nullptr;
+    while(current && current->patient.getSeverity() <= node->patient.getSeverity()) {
+
     }
 
 }
 
 /* Remove function */
-void Heap::remove(Patient patient) {
-    // body
-}
-
-/* Sort function */
-void Heap::sort() {
+void LL::remove(Patient patient) {
     // body
 }
