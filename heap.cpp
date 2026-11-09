@@ -6,6 +6,8 @@ struct Node {
     int score;
     Node* leftChild;
     Node* rightChild;
+
+    Node(Patient patient_, int score_) : patient(patient_), score(score_) {};
 };
 
 class Heap
@@ -16,18 +18,33 @@ private:
 public:
     Heap(); // Constructor
     ~Heap(); // Destructor
-
-    int insert(); // Insert into heap
-    int remove(); // Delete from heap
+    
+    void insert(Patient patient); // Insert into heap
+    void remove(Patient patient); // Delete from heap
     void sort(); // Prioritize
-
 };
 
-
-Heap::Heap()
-{
+/* Constructor */
+Heap::Heap() {
+    // body
 }
 
-Heap::~Heap()
-{
+/* Destructor */
+Heap::~Heap() {
+    // body
+}
+
+/* Insert function */
+void Heap::insert(Patient patient) {
+    // body
+}
+
+/* Remove function */
+void Heap::remove(Patient patient) {
+    // body
+}
+
+/* Sort function */
+void Heap::sort() {
+    // body
 }
