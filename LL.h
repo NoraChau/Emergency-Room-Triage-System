@@ -1,6 +1,5 @@
 #include <string>
-#include "Patient.cpp"
-#include <iterator>
+#include "Patient.h"
 
 struct Node {
     Patient patient;
@@ -27,8 +26,8 @@ public:
 void LL::insert(Patient patient) {
     Node* node = new Node(patient);
 
-    /* There is no node in the LL */
-    if(!head) {  
+    // There is no node in the LL
+    if(!head) {
         head = node;
         tail = node;
         return;
