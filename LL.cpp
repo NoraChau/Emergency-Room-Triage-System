@@ -19,7 +19,7 @@ public:
     ~LL(); // Destructor
 
     void insert(Patient patient); // Insert into heap
-    void remove(Patient patient); // Delete from heap
+    void remove(Patient &patient); // Delete from heap
 };
 
 
@@ -27,20 +27,24 @@ public:
 void LL::insert(Patient patient) {
     Node* node = new Node(patient);
 
-    // There is no node in the LL
+    /* There is no node in the LL */
     if(!head) {  
         head = node;
         tail = node;
         return;
     }
 
-    // There is only one node in the LL
+    /* There is only one node in the LL */
     if(!head->next) {
         head->next = node;
         tail = node;
         return;
     }
 
+    /* 
+     * If patient has Severity 5, automatically insert at the end. 
+     * Arrival time is taken care of by FCFS basis. 
+    */
     if(node->patient.getSeverity() == 5) {
         tail->next = node;
         tail = node;
@@ -49,16 +53,17 @@ void LL::insert(Patient patient) {
 
     Node* current = head;
     Node* prev = nullptr;
-    while(current && current->patient.getSeverity() <= node->patient.getSeverity()) {
+    while(current && current->patient.getSeverity() <= node->patient.getSeverity())  // Stops when the current node has higher Severity
+    {
         prev = current;
         current = current->next;
     }
-
-    // NOT FINISHED
-
+    prev->next = node;
+    node->next = current;
+    return;
 }
 
 /* Remove function */
-void LL::remove(Patient patient) {
-    // body
+void LL::remove(Patient &patient) {
+    
 }
