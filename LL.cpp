@@ -44,14 +44,17 @@ void LL::insert(Patient patient) {
     if(node->patient.getSeverity() == 5) {
         tail->next = node;
         tail = node;
-        return
+        return;
     }
 
-    Node* current = front;
+    Node* current = head;
     Node* prev = nullptr;
     while(current && current->patient.getSeverity() <= node->patient.getSeverity()) {
-
+        prev = current;
+        current = current->next;
     }
+
+    // NOT FINISHED
 
 }
 
