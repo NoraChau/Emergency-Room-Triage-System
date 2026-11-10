@@ -65,5 +65,6 @@ void LL::insert(Patient patient) {
 
 /* Remove function */
 void LL::remove(Patient &patient) {
-    
+    if (!head) return;
+
 }
