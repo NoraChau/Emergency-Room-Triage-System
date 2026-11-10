@@ -63,7 +63,28 @@ void LL::insert(Patient patient) {
 }
 
 /* Remove function */
-void LL::remove(Patient &patient) {
+void LL::remove(Patient &patient) { // Solves issue if a patient has the same name 
+    
+    // If there is no nodes in the LL, no patients
     if (!head) return;
 
+    // If the patient is stored in the head node
+    if (&(head->patient) == &patient) {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        return;
+    }
+
+    Node* temp = head;
+    Node* prev = nullptr;
+    while (temp && &(temp->patient) != &patient) { // Traverse through all the patients
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if (!temp) return; // If no matching patient was found, return
+
+    prev->next = temp-> next; // If the patient was found, delete it
+    delete temp;
 }
